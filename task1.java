@@ -1,4 +1,5 @@
 import java.util.Random;
+import java.util.Arrays;
 
 // 1. Задать одномерный массив и найти в нем минимальный и максимальный элементы
 
@@ -11,7 +12,7 @@ public class task1 {
         getExstrimValues(5);
     }
 
-    public static void getExstrimValues(int size) {
+    private static void getExstrimValues(int size) {
         int[] arr = new int[size];
         Random random = new Random();
         int min = arr[0];
@@ -25,6 +26,7 @@ public class task1 {
                 max = arr[i];
             }
         }
+        System.out.println(Arrays.toString(arr));
         System.out.println(min);
         System.out.println(max);
     }
