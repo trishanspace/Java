@@ -1,5 +1,6 @@
 import java.util.Scanner;
-// import java.util.LinkedList;
+import java.util.ArrayList;
+
 // 1. Реализовать консольное приложение, которое:
 
 // Принимает от пользователя и “запоминает” строки.
@@ -10,29 +11,25 @@ import java.util.Scanner;
 public class task1 {
 
     public static void main(String[] args) {
-        ex1(" ");
-    }
-
-    private static void ex1(String list) {
-        // LinkedList<String> list = new LinkedList<>();
+        ArrayList<String> list = new ArrayList<>();
         Scanner scanner = new Scanner(System.in);
-        System.out.printf("Введите строку: ");
-        String[] inputs = scanner.nextLine().split(" ");
-        StringBuilder sb = new StringBuilder(list);
+        while (true) {
+            String input = scanner.nextLine();
+            if (input.equals("print")) {
+                String temp1 = list.get(list.size()-1);
+                list.remove(list.size()-1);
+                list.add(0, temp1);
 
-        if (inputs.equals("print")) {
+                String temp2 = list.get(1);
+                list.remove(1);
+                list.add(list.size(), temp2);
 
-            char first = sb.charAt(0);
-            sb.setCharAt(0, sb.charAt(sb.length() - 1));
-            sb.setCharAt(sb.length() - 1, first);
-            sb.toString();
-            System.out.println(sb);
-
-        } else if (inputs.equals("revert")) {
-            sb.deleteCharAt(sb.length() - 1);
-            System.out.println(sb);
-        } else {
-            System.out.println(sb);
+            } else if (input.equals("revert")) {
+                list.remove(list.size()-1);
+            } else {
+                list.add(input);
+            }
+            System.out.println(list);
         }
     }
 }
